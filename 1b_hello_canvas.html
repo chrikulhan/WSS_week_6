@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+<!--  stopped at timestamp week 6 video 1 timestamp 5:44pm -->
+</head>
+<body>
+
+<!--type canvas element (below) in body of html-->
+<!--give it an id
+a height and a width
+can be empty, no content necessary.-->
+<!--<canvas id ="canvas" height = "200" width = "300">-->
+<!--  change size a little:-->
+<canvas id ="canvas" height = "500" width = "500">
+<!--  ^^make the size bigger-->
+</canvas>
+
+<!--add script, after you canvas in your body:-->
+
+<script>
+<!--  create a variable to represent the canvas:-->
+  let canvas = document.querySelector('#canvas')
+//create a context (called a drawing contex), the thing that will
+// actually do the drawing on the canvas:
+  let context = canvas.getContext('2d')
+//to draw something, you ask the context to draw whatever you need.
+//an easy thing to draw is a rectangle or square:
+//  context.fillRect(20, 20, 100, 100)
+//20 pixels from the left,20 pixels from the top is where on the page it starts
+//100 pixels wide,100 pixels tall is how big it is.
+//default color is black.
+context.fillRect(120, 20, 50, 200)
+//^^moved the rectangle to the right a little (120).
+//^^changed the size to 50, 200 results in a tall narrow rectangle.
+
+
+</script>
+
+</body>
+</html>
