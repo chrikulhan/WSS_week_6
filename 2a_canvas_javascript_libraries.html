@@ -28,6 +28,30 @@ can be empty, no content necessary.-->
 <!--add script, after you canvas in your body:-->
 
 <script>
+
+  /* *****Drawing*****
+  -Can draw rectangles, arcs, lines, text
+  -Set the fill and/or stroke color(s) and styles for the shape
+  -(for lines and arcs/circles) begin a path, define the coordinates
+  -Call stroke or fill method to draw
+
+  **Can do step 1 and 2 in any order
+  **Setting fill/stroke style applies to all further drawing, until changed
+*/
+
+  /* ****Canvas Fill vs. Stroke****
+  -Stroke = draw an outline, or lines
+  -Fill = fill area
+
+  -Can fill or stroke with HTML color names, or hex color codes
+     (or gradients, or patterns).
+  -Can set line width, lineWidth attribute
+  -Look up hex color codes:
+          http://htmlcolorcodes.com/color-picker/
+  -HTML/CSS recognized color names:
+          http://www.w3schools.com/colors/colors_names.asp
+*/
+
   <!--  create a variable to represent the canvas:-->
   let canvas = document.querySelector('#canvas')
   //or let canvas = document.getElementById("canvas")
@@ -65,9 +89,29 @@ can be empty, no content necessary.-->
   context.strokeRect(250, 350, 100, 50)
 
   //change the below box fill color:
-  context.fillstyle = 'yellow'
+  context.fillStyle = 'orange'
   //how would you draw a box that has a fill AND an outline:
   context.fillRect(40, 250, 150, 150)
+
+  //change the line color of the below outline rectangle:
+  context.strokeStyle = 'green'
+  //change the line width of the below outline rectangle:
+  context.lineWidth = 4
+  //now draw an outline around the yellow box:
+  //draw a strokeRect on top of it and use the same coordinates:
+  context.strokeRect(40, 250, 150, 150)
+
+/*  Drawing lines is trickier: (do 4 things)
+  1. Create a path:*/
+  context.beginPath() //where is the line going to go on your page ?
+
+  // 2. Move the context to focus on the beginning of the line:
+  context.moveTo(10, 20) //where is the line going to begin?
+//  (10= from top left to right, 20= from top to bottom)
+
+
+
+
 
 
 </script>
