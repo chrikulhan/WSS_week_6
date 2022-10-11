@@ -3,8 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-
-<!--  stopped at timestamp week 6 video 1 timestamp 5:44pm -->
+<!-- insert style here to be used by canvas:-->
+<!--  typically there is an external style sheet.(CSS)-->
+      <style>
+          canvas {
+            border: 1px black solid;
+          }
+      </style>
+<!--  the above style ^^ allows for you to see a border in the canvas of the html
+site where the canvas is. -->
 </head>
 <body>
 
@@ -23,7 +30,8 @@ can be empty, no content necessary.-->
 <script>
 <!--  create a variable to represent the canvas:-->
   let canvas = document.querySelector('#canvas')
-//create a context (called a drawing contex), the thing that will
+//or let canvas = document.getElementById("canvas")
+//create a context (called a drawing context), the thing that will
 // actually do the drawing on the canvas:
   let context = canvas.getContext('2d')
 //to draw something, you ask the context to draw whatever you need.
@@ -32,11 +40,19 @@ can be empty, no content necessary.-->
 //20 pixels from the left,20 pixels from the top is where on the page it starts
 //100 pixels wide,100 pixels tall is how big it is.
 //default color is black.
-context.fillRect(120, 20, 50, 200)
+  context.fillRect(120, 20, 50, 200)
 //^^moved the rectangle to the right a little (120).
 //^^changed the size to 50, 200 results in a tall narrow rectangle.
+  context.strokeRect(200, 300, 100, 150)
+//^^ gives an outline of a rectangle.
+//where ^^ 200, 300 is the corner the rectangle (or square) starts in
+//100 pixels wide, 150 pixels tall.
+//could use CSS to provide a border for canvas
 
-
+//Your turn, add some rectangles:
+  context.fillRect(200,200, 20, 50)
+  context.fillRect(300, 20, 50, 200)
+  context.strokeRect(350, 250, 100, 50)
 </script>
 
 </body>

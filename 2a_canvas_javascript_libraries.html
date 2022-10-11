@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <!-- insert style here to be used by canvas:-->
+  <!--  typically there is an external style sheet.(CSS)-->
+  <style>
+    canvas {
+      border: 1px black solid;
+    }
+  </style>
+  <!--  the above style ^^ allows for you to see a border in the canvas of the html
+  site where the canvas is. -->
+</head>
+<body>
+
+<!--type canvas element (below) in body of html-->
+<!--give it an id
+a height and a width
+can be empty, no content necessary.-->
+<!--<canvas id ="canvas" height = "200" width = "300">-->
+<!--  change size a little:-->
+<canvas id ="canvas" height = "500" width = "500">
+  <!--  ^^make the size bigger-->
+</canvas>
+
+<!--add script, after you canvas in your body:-->
+
+<script>
+  <!--  create a variable to represent the canvas:-->
+  let canvas = document.querySelector('#canvas')
+  //or let canvas = document.getElementById("canvas")
+  //create a context (called a drawing context), the thing that will
+  // actually do the drawing on the canvas:
+  let context = canvas.getContext('2d')
+  //to draw something, you ask the context to draw whatever you need.
+  //an easy thing to draw is a rectangle or square:
+  //  context.fillRect(20, 20, 100, 100)
+  //20 pixels from the left,20 pixels from the top is where on the page it starts
+  //100 pixels wide,100 pixels tall is how big it is.
+  //default color is black.
+  context.fillRect(120, 20, 50, 200)
+  //^^moved the rectangle to the right a little (120).
+  //^^changed the size to 50, 200 results in a tall narrow rectangle.
+  context.strokeRect(200, 300, 100, 150)
+  //^^ gives an outline of a rectangle.
+  //where ^^ 200, 300 is the corner the rectangle (or square) starts in
+  //100 pixels wide, 150 pixels tall.
+  //could use CSS to provide a border for canvas
+
+  //Your turn, add some rectangles:
+  context.fillRect(200,200, 20, 50)
+
+  //change the color of the filled boxes:
+  context.fillStyle = 'red' //will change below vvv
+  context.fillRect(300, 20, 50, 200)
+
+  //change the color of the outline of the boxes:
+  context.strokeStyle = 'turquoise'
+  //now this box vvv is outlined in turquoise:
+  context.strokeRect(350, 250, 100, 50)
+  context.lineWidth = 20 //change the outline of the box with a
+  //thicker number of pixels (20)
+  context.strokeRect(250, 350, 100, 50)
+
+  //change the below box fill color:
+  context.fillstyle = 'yellow'
+  //how would you draw a box that has a fill AND an outline:
+  context.fillRect(40, 250, 150, 150)
+
+
+</script>
+
+</body>
+</html>
