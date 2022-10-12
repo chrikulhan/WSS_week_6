@@ -79,13 +79,31 @@ can be empty, no content necessary.-->
 
     //to draw half a circle:
     context.beginPath()
-    context.arc(250,250,75, 2, 4) //(x-axis from top left, y-axis from top left, radius, startAngle, endAngle.)
+    context.arc(250,250,75, 0, Math.PI) //(x-axis from top left, y-axis from top left, radius, startAngle, endAngle.)
     //javascript using radians, 2*pie radians = 6.3 = (2*Math*PI), so if startAngle is 0 and endAngle is 6.3 you'll get a full circle.
+
+    //to draw a quarter circle:
+    context.beginPath()
+    context.arc(200,200,75, 0, Math.PI/2 ) //will give a quarter circle
     context.lineWidth = 4
-    context.strokeStyle = 'blue'
+    context.strokeStyle = ''
     context.stroke() //actually draws the thing
 
-//    stopped at video week 6, video 2, timestamp 14:30
+//Can draw text: (write a message in our canvas):
+    //set font:
+    context.fillStyle = 'black'
+    //vv size font
+    context.font = '50px Courier'
+
+
+    //outline text: font will be applied below, but the fill style is not applied
+    context.strokeText('This is some more text', 50, 200)
+
+    context.fillText('Hello world', 50, 100)
+    //^^(context.fillText('What you want to say', start x coordinate, start y coordinate
+
+
+//
 
 </script>
 </body>
