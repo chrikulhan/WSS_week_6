@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Gradient_example</title>
+
+  <style>
+    canvas {
+      border: 1px black solid;
+    }
+  </style>
+
+</head>
+<body>
+
+<canvas id ="canvas" height = "500" width = "500">
+</canvas>
+
+<script>
+
+
+let canvas = document.querySelector('#canvas')
+let context = canvas.getContext('2d')
+context.beginPath()
+
+//horizontal gradient
+
+let c_h = document.getElementById("canvas_horiz")
+let ctx_h = c_h.getContext("2d")
+
+//Create a gradient
+//creates a gradient along the line given by the coordinates represented by the
+//imagine a line from (0,0) to (300, 0) which is a horizantal line. So
+//the gradient moves through the colors from left to right.
+
+let gradient_h = ctx_h.createLinearGradient(0, 0, 300, 0)
+
+//need at least two color stops. The first argument is where to start the color
+//the values need to be in the range 0 to 1
+gradient_h.addColorStop(0, "green") //green at 0 pixels along the gradient line
+gradient_h.addColorStop(0.5, "blue") //blue in the middle
+gradient_h.addColorStop(1, "purple") //so purple will be at the 300 px along the gradient
+
+//once the gradient is configured, set the fill style
+ctx_h.fillstyle = gradient_h
+
+//add fill a rectangle with it
+ctx_h.fillRect(0, 0, 300, 300)
+//part of canvas/gradients.html
+
+</script>
+</body>
+</html>

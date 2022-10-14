@@ -1,0 +1,37 @@
+// Maps with Leaftlet.Js:
+
+// Link to Leaflet’s CSS and JS
+// Create a div (will be empty on the page) to contain the map,
+// and set the size to have non-zero height and width
+// Use JS to configure and customize the map (center of map, how zoomed in, etc.)
+
+// https://leafletjs.com/
+
+//googlemaps.com is a famous mapping library, there is less set up for leaflet.
+
+<!DOCTYPE html>
+<html>
+<head>
+
+    <!-- Leaflet script and CSS -->
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css" />
+    //very similar to how we included bootstrap in our pages:
+    <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"></script>
+
+    <!-- Our stylesheet. Make sure the size of the map div is set before trying to draw the map.-->
+    <link rel="stylesheet" type="text/css" href="mapstyle.css">
+    <!-- Our script, uses Leaflet to draw the maps and map components for this page
+     **will customize and draw the map on the page-->
+    <script async defer src="maps.js"></script>
+
+</head>
+<body>
+
+<h1>Where are Minnesota State Colleges?</h1>
+<div id="college-map"></div>
+
+</body>
+</html>
+
+

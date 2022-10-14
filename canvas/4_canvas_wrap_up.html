@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Canvas_wrap_up</title>
+<!--  6. add a border to the canvas-->
+  <style>
+    canvas{
+      border: 1px black solid;
+    }
+  </style>
+</head>
+<body>
+<!--1. create a canvas-->
+  <canvas id ="canvas" height="500" width="500"</canvas>
+<!--2. Add a script:-->
+<script>
+  let canvas = document.querySelector("#canvas")
+//  3. create a context:
+  let context = canvas.getContext('2d')
+//  4. add a click event listener:
+
+  canvas.addEventListener('click', function(){
+  //  5. draw where the canvas is clicked:
+  //  5a. where on the canvas was it clicked (x, y) coordinates:
+    let x = event.offsetX
+    let y = event.offsetY
+  //  5b. Then fill in the places on the canvas the clicks are happening:
+  //  The square appears right under neath the top left pixel
+  //  5c: the numbers are the size of what will print when clicked:
+  //   context.fillRect(x, y, 15, 15)
+  //   context.fillRect(x, y, 30, 30)
+    // ^^^The square appears right under neath the top left pixel
+  //  shift where the box appears when the cursor clicks to the middle:
+  //   context.fillRect(x-15, y-15, 30, 30)
+  //  change the variable size:
+    let size = 5
+    context.fillRect(x-(size/2), y-(size/2), size, size) //don't forget to change where the cursor starts
+  //  so the cursor will be at the center of the object.
+  })
+
+//  FOR HOMEWORK:
+//  to draw circles instead of squares, use arc instead of draw rect.
+  //draw in different colors: add typeSelect (color) to be able to draw in different colors
+//  can you adjust the size of the circle that is drawn?
+
+</script>
+
+
+</body>
+</html>
+
+<!--cool links:
+https://bl.ocks.org/mbostock/
+https://observablehq.com/@d3/cloud-contours
+https://phaser.io/games
+  **these are built on top of canvas
+  **all interactivity is built in javascript!!!
+  **There are a lot of tuturials
+
+
+
+
+
+-->
+
+

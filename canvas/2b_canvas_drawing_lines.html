@@ -71,8 +71,8 @@ can be empty, no content necessary.-->
 //Drawing circles: takes a few method calls:
 
     context.beginPath()
-    context.arc(250,250,75, 0, 2 * Math.PI) //(x-axis from top left, y-axis from top left, radius, startAngle, endAngle.)
-    //javascript using radians, 2*pie radians = 6.3 = (2*Math*PI), so if startAngle is 0 and endAngle is 6.3 you'll get a full circle.
+    context.arc(250,250,75, 0, 2 * Math.PI) //(x-axis from top left, y-axis from top left, radius, startAngle, endAngle (2*Math.PI = whole circle).)
+    //javascript using radians, 2*pie radians = 6.3 = (2*Math.PI), so if startAngle is 0 and endAngle is 6.3 you'll get a full circle.
     context.lineWidth = 4
     context.strokeStyle = 'magenta'
     context.stroke() //actually draws the thing

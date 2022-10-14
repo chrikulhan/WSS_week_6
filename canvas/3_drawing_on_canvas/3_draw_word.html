@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Draw_on_a_picture</title>
+    <script async defer src="3_draw_word.js">
+// <!-- 1.async defer = wait until the html is all running until the script starts running
+// -script will try to work with all the elements, but if the script runs before the page is loaded
+//  none of the elements will exist yet, and there will be errors.
+// 2. need an src (the js file you will be putting the styling into.)
+// -->
+    </script>
+
+</head>
+
+<body>
+<!--5. add a label for the input (what will be typed on the photo), with instructions (type some text)-->
+<label for="image-text">Type some text</label>
+<!--6. create a input with id = image-text, type will be text
+add max length otherwise could type forever, could change depending on the width of the photo.-->
+<input id="image-text" type ="text" maxlength="20">
+<!--moved^^ input above the canvas so it's easier to see on the page-->
+<!--4. canvas and input are inline elements, so need to add a line break:-->
+<br>
+<!--3. need a canvas, with id= canvas, and height and width equal to height and width of image:-->
+ <canvas id="canvas" height="800px" width="1200px"></canvas>
+
+<!--6a. now move to the js file-->
+
+
+
+
+</body>
+</html>

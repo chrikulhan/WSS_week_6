@@ -1,0 +1,11 @@
+/*Add these styles to set the size of #college-map div*/
+
+/*Set a border with color of your choice*/
+
+/*If you need other styles for your page, can add them to this file */
+
+#college-map {
+    width: 600px
+    height: 500px
+    border: 1px solid green;
+}
