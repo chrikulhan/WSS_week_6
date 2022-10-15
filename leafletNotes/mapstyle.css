@@ -4,8 +4,10 @@
 
 /*If you need other styles for your page, can add them to this file */
 
+/*3. set height and width to a non-zero number,
+create a border*/
 #college-map {
-    width: 600px
-    height: 500px
+    width: 600px;
+    height: 500px;
     border: 1px solid green;
 }
