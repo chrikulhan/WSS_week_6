@@ -80,50 +80,100 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 }).addTo(map);
 //tells leaflet to add a tile layer to your map.
 
-//add a marker for Minneapolis College:
-//make an array with MCTC coordinates:
-let mctcCoordinates = [44.9724, -93.2844] //can find this on google-maps
 
-//make a marker:
-// let mctcMarker = L.marker(mctcCoordinates).addTo(map)
-//add a pop-up to a marker to give it identifying characteristics
-// (add in .bindPopup('string goes here'(Minneapolis College) before addTo.:
+//*************************separate college inputs begin*****
+
+// //add a marker for Minneapolis College:
+// //make an array with MCTC coordinates:
+// let mctcCoordinates = [44.9724, -93.2844] //can find this on google-maps
+//
+// //make a marker:
+// // let mctcMarker = L.marker(mctcCoordinates).addTo(map)
+// //add a pop-up to a marker to give it identifying characteristics
+// // (add in .bindPopup('string goes here'(Minneapolis College) before addTo.:
+// // let mctcMarker = L.marker(mctcCoordinates)
+// //     .bindPopup('Minneapolis College')
+// //     .addTo(map)
+// //could write HTML in the markers:
 // let mctcMarker = L.marker(mctcCoordinates)
-//     .bindPopup('Minneapolis College')
+//     .bindPopup('Minneapolis College<br><a href="https://minneapolis.edu">Website</a>')
 //     .addTo(map)
-//could write HTML in the markers:
-let mctcMarker = L.marker(mctcCoordinates)
-    .bindPopup('Minneapolis College<br><a href="https://minneapolis.edu">Website</a>')
-    .addTo(map)
-
-//add another marker for St. Paul College:
-let stPaulCoordinates = [44.9483, -93.1099]
-// let stPaulMarker = L.marker(stPaulCoordinates).addTo(map)
-
-//Add a popup and website to St. Paul college's marker as well:
-let stPaulMarker = L.marker(stPaulCoordinates)
-    .bindPopup('St. Paul College<br><a href="https://www.saintpaul.edu/">Website</a>')
-    .addTo(map)
-
-/*Other types of markers you can draw on your maps:
--draw polygons, shapes, angles (check out leaftlet's website: https://leafletjs.com/reference.html)
-*/
-
-//draw a circle to the map around the twin cities metro area:
-// let metroAreaCircle = L.circle(metroAreaCenterCoordinates)
-//     .bindPopup('Twin Cities')
+//
+// //add another marker for St. Paul College:
+// let stPaulCoordinates = [44.9483, -93.1099]
+// // let stPaulMarker = L.marker(stPaulCoordinates).addTo(map)
+//
+// //Add a popup and website to St. Paul college's marker as well:
+// let stPaulMarker = L.marker(stPaulCoordinates)
+//     .bindPopup('St. Paul College<br><a href="https://www.saintpaul.edu/">Website</a>')
 //     .addTo(map)
-//results in a *tiny* blue circle in the center of the map.
+//
+// /*Other types of markers you can draw on your maps:
+// -draw polygons, shapes, angles (check out leaftlet's website: https://leafletjs.com/reference.html)
+// */
+//
+// //draw a circle to the map around the twin cities metro area:
+// // let metroAreaCircle = L.circle(metroAreaCenterCoordinates)
+// //     .bindPopup('Twin Cities')
+// //     .addTo(map)
+// //results in a *tiny* blue circle in the center of the map, not useful.
+//
+// //Need to do more customization of circle:
+// //add a second attribute: an object {}, use to set the properties of the circle:
+// // let metroAreaCircle = L.circle(metroAreaCenterCoordinates, {
+// //         // color: 'green', //can use any css color
+// //         color: 'red',
+// //         radius: 30000,  //meters
+// //         // fillOpacity: 0.2 //how opaque it is. if set to 1 it's a solid circle.
+// //         // if the opacity is set to 0, it's completely see-through.
+// //         // fillOpacity: 0.1 //more faint
+// //         // fillOpacity: 1 //completely filled in.
+// //         //back to a rational opacity value:
+// //         fillOpacity: 0.1
+// //     } )
+// //     .bindPopup('Twin Cities')
+// //     .addTo(map)
+//
+// //add a bindPopUp to describe what's in the circle:
+// let metroAreaCircle = L.circle(metroAreaCenterCoordinates, {
+//     // color: 'green', //can use any css color
+//     color: 'red',
+//     radius: 30000,  //meters
+//     // fillOpacity: 0.2 //how opaque it is. if set to 1 it's a solid circle.
+//     // if the opacity is set to 0, it's completely see-through.
+//     // fillOpacity: 0.1 //more faint
+//     // fillOpacity: 1 //completely filled in.
+//     //back to a rational opacity value:
+//     fillOpacity: 0.1
+// } )
+//     .bindPopup('Twin Cities Metro Area<br><a href="https://en.wikipedia.org/wiki/Twin_cities">Wikipedia Link</a>')
+//     .addTo(map)
+//
+// //Clara's reference: https://claraj.github.io/week5-examples/leaflet_maps/hello_leaflet_maps.html
+//
+// /* Your turn: Draw a marker for Normandale College
+// Add a popUp that has a working link to their website
+//  */
+//
+// let normandaleCoordinates = [44.8297, -93.3312]
+// let normandaleMarker = L.marker(normandaleCoordinates)
+//     .bindPopup('Normandale College<br><a ref="https://www.normandale.edu/">Website</a>')
+//     .addTo(map)
+//
 
-//Need to do more customization of circle:
-//add a second
-let metroAreaCircle = L.circle(metroAreaCenterCoordinates, )
-    .bindPopup('Twin Cities')
-    .addTo(map)
+//*************************separate college inputs ends*****
 
-//stopped on video 6 timestamp 12:13
+//Write a loop to extract the data here to get markers and websites on a leaflet map:
+//reference for the array of 5 different college objects below: https://git.io/JUCvV
+campuses =  [
+    {"name": "Minneapolis College", "website": "https://minneapolis.edu", "coordinates": [44.9724, -93.2844] },
+    {"name": "Saint Paul College", "website": "https://saintpaul.edu", "coordinates": [44.94839, -93.1099] },
+    {"name": "Normandale Community College", "website": "https://normandale.edu", "coordinates": [44.8297, -93.3312] },
+    {"name": "North Hennepin Community College", "website": "https://nhcc.edu", "coordinates": [45.1054232,-93.3767558] },
+    {"name": "Century College", "website": "https://www.century.edu/", "coordinates": [45.0438494,-92.9862026] }
+]
 
-
+//stopped video 6, 19:38
 
 
 
