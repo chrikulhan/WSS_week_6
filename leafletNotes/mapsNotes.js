@@ -37,7 +37,7 @@ let zoomLevel = 9
 //check out the leaflet .js file has some automatic things in it:
 //(https://unpkg.com/leaflet@1.5.1/dist/leaflet.js)
 //L is a variable found in the above package:
-//needs one argument (the name of the div you are going to draw the map in:
+//needs one argument (the name of the div (in the html code) you are going to draw the map in:
 //NOT hashtag, just college-map
 //will tell leaflet where to draw the map on the page.
 let map = L.map('college-map').setView(metroAreaCenterCoordinates, zoomLevel)
@@ -71,7 +71,7 @@ let map = L.map('college-map').setView(metroAreaCenterCoordinates, zoomLevel)
 //copy the js vv from the above link^^:
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    //l is the leaflet object.
+    //L is the leaflet object.
     //.tilelayer is setting the tile layer
     //leaflet will use the above url to request from openstreetsmap to request the correct images.
 
@@ -165,18 +165,18 @@ let normandaleMarker = L.marker(normandaleCoordinates)
 
 //Write a loop to extract the data here to get markers and websites on a leaflet map:
 //reference for the array of 5 different college objects below: https://git.io/JUCvV
-campuses =  [
-    {"name": "Minneapolis College", "website": "https://minneapolis.edu", "coordinates": [44.9724, -93.2844] },
-    {"name": "Saint Paul College", "website": "https://saintpaul.edu", "coordinates": [44.94839, -93.1099] },
-    {"name": "Normandale Community College", "website": "https://normandale.edu", "coordinates": [44.8297, -93.3312] },
-    {"name": "North Hennepin Community College", "website": "https://nhcc.edu", "coordinates": [45.1054232,-93.3767558] },
-    {"name": "Century College", "website": "https://www.century.edu/", "coordinates": [45.0438494,-92.9862026] }
-]
-
-campuses.forEach(function(collegeCampus){
-    console.log(collegeCampus)
-
-})
+// campuses =  [
+//     {"name": "Minneapolis College", "website": "https://minneapolis.edu", "coordinates": [44.9724, -93.2844] },
+//     {"name": "Saint Paul College", "website": "https://saintpaul.edu", "coordinates": [44.94839, -93.1099] },
+//     {"name": "Normandale Community College", "website": "https://normandale.edu", "coordinates": [44.8297, -93.3312] },
+//     {"name": "North Hennepin Community College", "website": "https://nhcc.edu", "coordinates": [45.1054232,-93.3767558] },
+//     {"name": "Century College", "website": "https://www.century.edu/", "coordinates": [45.0438494,-92.9862026] }
+// ]
+//
+// campuses.forEach(function(collegeCampus){
+//     console.log(collegeCampus)
+//
+// })
 
 
 
