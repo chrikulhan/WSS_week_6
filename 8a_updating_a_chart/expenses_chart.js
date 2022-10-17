@@ -112,7 +112,8 @@ addExpenseButton.addEventListener('click', function() {
 
 // 5. TODO add event listener to click the Add Expense button when the enter key is pressed
 
-//add window and an event listener. Listening for the keyup event:
+//add window and an event listener. Listening for the keyup event,
+// add a function for this:
 
 window.addEventListener('keyup', function(){
 //    is the user clicking the *enter* key specifically?
@@ -121,10 +122,21 @@ window.addEventListener('keyup', function(){
         //make sure that the focus is on one of the input elements when
         //the user presses enter, click the addExpense button:
     //Make an array of our input elements:
-        let inputElements = []
+        let inputElements = [expenseNameInput, expenseAmountInput, addExpenseButton]
+        //make sure one of the "inputElements" has the focus:
+        //can check that by seeing if the active element of a document
+        //is the thing that has the focus. (active element = where the cursor is blinking/where the blue bar is)
+        //called the *active element*
+        if (inputElements.includes(document.activeElement)){
+            addExpenseButton.click()
+            //final addition, focus on the expense type input,
+            //meaning that after the inputs are typed, and the enter button is clicked,
+            //the cursor will move back to the type, not stay on the amount.
 
-    //    pause video 8, 17:50
-
-
+            //reference: https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus
+            expenseNameInput.focus()
+        }
     }
 })
+
+
