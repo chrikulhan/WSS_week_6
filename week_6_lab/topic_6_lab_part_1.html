@@ -6,7 +6,7 @@ with a context.strokeStyle or context.fillStyle statement-->
 <!--•	Add an input type="range" to set the radius of the circles drawn-->
 <!--When the user draws circles, the circles should be the color selected in the color input, and the size
 of the circles should be the size selected in the radius input.-->
-<!--(Optional: Extra credit available for best drawing drawn with your program. Also optional extra credit
+<!--(Optional: Extra credit available for best drawing with your program. Also optional extra credit
 for adding extra drawing tools to your page.)-->
 
 <!--started from this code: https://github.com/claraj/week5-examples/blob/master/canvas/mouse_drag.html-->
@@ -69,7 +69,7 @@ for adding extra drawing tools to your page.)-->
     let size = 10 //size of the
     context.beginPath() //this makes sure each new click isn't connected to the last click/drag.
     context.strokeStyle = 'blue' //will be the color of the drawing
-    context.arc(x-(size/2), y-(size/2), 5, 0, 2*Math.PI)
+    context.arc(x-(size/2), y-(size/2), size, 0, 2*Math.PI)
     //^^(x-axis from top left, y-axis from top left, radius, startAngle, endAngle (2*Math.PI = whole circle).)
     context.fill() //fills in the circle, from: https://github.com/claraj/week5-examples/blob/master/canvas/circles.html
     context.stroke()
