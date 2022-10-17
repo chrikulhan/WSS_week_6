@@ -1,4 +1,6 @@
-//took code from mapsNotes.js:
+//took code from mapsNotes.js. webstorm automatically changed my reference when I
+//changed the js page to mapsNotes in the html file. The problem was I needed to change
+//it back to maps.js (my current working js file)
 
 let metroAreaCenterCoordinates= [44.96, -93.2]
 let zoomLevel = 9
@@ -27,16 +29,21 @@ campuses.forEach(function(collegeCampus){
     // console.log (collegeMarker)
     let collegeWebsite = collegeCampus.website
     // console.log(collegeWebsite)
-    let collegeName = collegeCampus.name
+    let collegeName = (collegeCampus.name)
     // console.log(collegeName)
     L.marker(collegeMarker).addTo(map)
         .bindPopup(collegeName)
-        // .bindPopup((collegeName)<br><a href="{collegeWebsite}">Website</a>)
+        .bindPopup(`${collegeName}<br><a href=${collegeWebsite}">Website</a>`)
         .addTo(map)
 })
 
-//can't get my old code to work. I must have messed it up.
-// Stopped video 6 at 21:35
+// alternate (more succinct) solution in video:
+
+// campuses.forEach(function(collegeCampus){
+//     let markerText = `<b>${collegeCampus.name}</b><br><a href="${collegeCampus.website}">Website</a>`
+//     L.marker(collegeCampus.coordinates).bindPopup(markerText).addTo(map)
+// })
+
 
 // let mctcCoordinates = [44.9724, -93.2844]
 // let mctcMarker = L.marker(mctcCoordinates)

@@ -1,0 +1,33 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello_Chart</title>
+<!-- 1. Add a link to ChartJS javascript&ndash-->
+    <!--https://www.chartjs.org/docs/latest/(clicked on documentation)&ndash-->
+    <!--latest cdn (context distribution network)-->
+    <!--(https://www.jsdelivr.com/package/npm/chart.js)-->
+    <!---select link "copy to clipboard" (copy HTML)-->
+
+<!--want the chartjs library to load right away vvv:&ndash;&gt;-->
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+<!--2. need to create a JS file (Create new js file)(called it hello_chart.js
+    -connect the js file to this html file:
+    Use the asyc defer to for vvv because we don't want it to run
+    until the whole page is loaded-->
+    <script async defer src="hello_chart.js"></script>
+
+</head>
+<body>
+<!--3. Put chart here with an id of soda-chart vvv:-->
+    <h1> Unscientific survey of soda preferences</h1>
+
+    <canvas id="soda-chart"></canvas>
+
+</body>
+</html>
+
+<!--4.move the hello_chart.js file-->
