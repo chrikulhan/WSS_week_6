@@ -17,6 +17,15 @@ for adding extra drawing tools to your page.)-->
   <meta charset="UTF-8">
   <title>Mouse Events</title>
 
+<!--header describing the page:-->
+  <h1 className="text-center">Select the color and size of your pen:</h1>
+
+<!--important reference for chart.js ?????-->
+<!--  <canvas id=""></canvas>-->
+
+<!--  reference to javascript where I will add the user input color and size:-->
+  <script async defer src="lab_topic_6_part_1.js"></script>
+
   <style>
 
     #canvas {
@@ -28,6 +37,16 @@ for adding extra drawing tools to your page.)-->
 </head>
 <body>
 
+<div class="drawing-selectors">
+  <label class="selector">Select a Color</label>
+  <input id="selected-color" class="selector-control" type="color">
+</div>
+
+<!--TODO: figure out how to make this bigger than zero:-->
+<div class="drawing-selectors">
+  <label class="selector">Select pen size</label>
+  <input id="selected-size" class="selector-control" type="number">
+</div>
 
 <P>Drag the mouse on the canvas</P>
 <canvas id="canvas" height="400" width="400"></canvas>
@@ -66,7 +85,11 @@ for adding extra drawing tools to your page.)-->
 
     //Draw a filled rectangle centered under the mouse click
     //x, y is the top left corner, so shift up and left by 5 to center it under the mouse.
-    let size = 10 //size of the
+    // let size = 10 //size of the circle
+
+    //change the size of the circle radius to user input:
+    let size = document.querySelector('#range')
+
     context.beginPath() //this makes sure each new click isn't connected to the last click/drag.
     context.strokeStyle = 'blue' //will be the color of the drawing
     context.arc(x-(size/2), y-(size/2), size, 0, 2*Math.PI)
