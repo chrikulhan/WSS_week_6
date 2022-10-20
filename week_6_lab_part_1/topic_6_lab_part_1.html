@@ -24,7 +24,7 @@ for adding extra drawing tools to your page.)-->
 <!--  <canvas id=""></canvas>-->
 
 <!--  reference to javascript where I will add the user input color and size:-->
-  <script async defer src="lab_topic_6_part_1.js"></script>
+  <script async defer src="../lab_topic_6_part_1.js"></script>
 
   <style>
 
@@ -45,24 +45,14 @@ for adding extra drawing tools to your page.)-->
 <!--TODO: figure out how to make this bigger than zero:(range??)-->
 <div class="drawing-selectors">
   <label class="selector">Select pen size</label>
-  <input id="selected-size" class="selector-control" type="number">
+  <input id="selected-size" class="selector-control" type="range">
 </div>
-
-<p>Select a color and a size above, <br> or click the button below to begin drawing:</p>
-<button id="button">Click here</button>
 
 <P>Drag the mouse on the canvas</P>
 <canvas id="canvas" height="400" width="400"></canvas>
 
 <script>
 
-
-  let button = document.querySelector('#button')
-  button.addEventListener('click', function(){
-  //  TODO add code here that allows the user to begin drawing (following the code) *if* they have selected
-  //  both a color and a pen size. (if selected-size < 0 || selected-color not chosen
-  //  OR have a default value, that allows the user to draw in black and a basic radius (black and size = 5)
-  })
   let canvas = document.querySelector('#canvas')
   let context = canvas.getContext('2d')
 
@@ -97,11 +87,17 @@ for adding extra drawing tools to your page.)-->
     //x, y is the top left corner, so shift up and left by 5 to center it under the mouse.
     // let size = 10 //size of the circle
 
-
-    context.beginPath() //this makes sure each new click isn't connected to the last click/drag.
+    context.beginPath()  //this makes sure each new click isn't connected to the last click/drag.
+    let colorSelectedInput = document.querySelector('#color')
     context.strokeStyle = colorSelected //will be the color of the drawing
 
     //change the size of the circle radius to user input:
+
+
+    let radiusSelectedInput = document.querySelector('#range')
+
+    let colorSelected = colorSelectedInput
+    let radiusSelected = radiusSelectedInput
 
     let size = radiusSelected
     context.arc(x-(size/2), y-(size/2), size, 0, 2*Math.PI)

@@ -1,0 +1,168 @@
+<!--Part 1: Drawing Program. (6 points) Start with the mouse drag program in the example repository.
+Add the following features:-->
+<!--•	Draw a circle instead of a square. The circle's center should be centered over the mouse pointer.-->
+<!--•	Add an input type="color" to select the drawing color.  The value from a color input can be used
+with a context.strokeStyle or context.fillStyle statement-->
+<!--•	Add an input type="range" to set the radius of the circles drawn-->
+<!--When the user draws circles, the circles should be the color selected in the color input, and the size
+of the circles should be the size selected in the radius input.-->
+<!--(Optional: Extra credit available for best drawing with your program. Also optional extra credit
+for adding extra drawing tools to your page.)-->
+
+
+<!--started from this code: https://github.com/claraj/week5-examples/blob/master/canvas/mouse_drag.html-->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mouse Events</title>
+
+<!--header describing the page:-->
+    <h2 className="text-center">Select the color and size of your pen:</h2>
+
+    <style>
+
+        #canvas {
+            border: 1px black solid;
+        }
+
+    </style>
+
+</head>
+<body>
+
+<!--Added selectors for pen size and color: -->
+<div class="drawing-selectors">
+    <label class="selector">Select a Color</label>
+    <input id="selected-color" class="selector-control" type="color">
+</div>
+
+<div class="drawing-selectors">
+    <label class="selector">Select pen size</label>
+    <input id="selected-size" class="selector-control" type="range">
+</div>
+
+<P>Drag the mouse on the canvas</P>
+<canvas id="canvas" height="400" width="400"></canvas>
+
+<!--undo button to clear the canvas: (from https://github.com/claraj/week5-examples/blob/master/canvas/mouse_draw_undo.html)-->
+<div>
+    <button id=undo>Undo</button>
+</div>
+
+<script>
+
+    let canvas = document.querySelector('#canvas')
+    let context = canvas.getContext('2d')
+    let colorSelectedInput = document.querySelector('#color')
+    let radiusSelectedInput = document.querySelector('#range')
+
+    let colorSelected = colorSelectedInput.value
+    // console.log(colorSelected)
+    let radiusSelected = radiusSelectedInput.value
+    // console.log(radiusSelected)
+    let undoButton = document.querySelector('#undo')
+
+    // Stores all the versions of the drawing the user has made.
+    let history = []
+
+    // Keep track of whether the mouse button has been pressed down or not.
+    // Think of this as whether the user is drawing or not, is their brush on the canvas?
+    let mousedown = false
+
+    canvas.addEventListener('mousedown', function() {
+        mousedown = true
+        let x = event.offsetX
+        let y = event.offsetY
+        draw(x, y)
+    })
+
+    canvas.addEventListener('mouseup', function() {
+        mousedown = false
+        saveHistory()
+    })
+
+    // If mouse leaves the canvas then stop drawing
+    canvas.addEventListener('mouseout', function() {
+        mousedown = false
+        saveHistory()
+
+    })
+
+    canvas.addEventListener('mousemove', function() {
+        // Only draw if the mouse button is pressed down.
+        if (mousedown) {
+            // event is a built-in variable, contains the event that triggered this function
+            // get the x, y location of the event
+            let x = event.offsetX
+            let y = event.offsetY   //offsetX, offsetY, may not work in older browsers
+            draw(x, y)
+        }
+    })
+
+    canvas.addEventListener('mousemove', function() {
+        // If the mouse button is not pressed down, do not draw.
+        if (!mousedown) { return }
+
+        //change the size of the circle radius to user input:
+
+        let size = radiusSelected
+
+        context.arc(x-(size/2), y-(size/2), size, 0, 2*Math.PI)
+        //^^(x-axis from top left, y-axis from top left, radius, startAngle, endAngle (2*Math.PI = whole circle).)
+        context.strokeStyle = colorSelected
+        context.fill() //fills in the circle, from: https://github.com/claraj/week5-examples/blob/master/canvas/circles.html
+
+    })
+    undoButton.addEventListener('click', function(){
+        undoHistory()
+    })
+
+    function draw(x, y) {
+        //Draw a filled rectangle centered under the mouse click
+        //x, y is the top left corner, so shift up and left by 5 to center it under the mouse.
+        context.fillRect(x-5, y-5, 10, 10) //this draws a rectangle and I know I want to draw a circle.
+        hasJustDrawn = true   // record that user has just drawn - used by undo
+    }
+
+
+    function saveHistory() {
+        let picture = canvas.toDataURL()  // convert image to data representation
+        if (history[history.length - 1] != picture) {   // if it's not already saved...
+            history.push(picture)  // add to history array
+        }
+    }
+
+    function undoHistory() {
+
+        /* if the user has just drawn, need to remove the last drawing from the history; and then remove
+          the image before that and draw it on the canvas.
+          So if user has just drawn, history could be [img0, img1, img2, img3]
+          pop img3
+          Draw img2 on the canvas
+          If the user hasn't just drawn - for example, they are clicking the undo button several times to
+          undo a series of lines - then remove the last image from history and draw that
+          So history could be [img0, img1, img2]
+          Pop img2
+          Draw img1 on the canvas
+          */
+
+        history.pop()
+        let previousPicture = history[history.length - 1]
+
+        context.clearRect(0, 0, canvas.width, canvas.height)
+        if (previousPicture) {
+            // Create an image from the previous picture and draw it on the canvas
+            let image = new Image()
+            image.src = previousPicture
+            image.addEventListener('load', function() {
+                context.drawImage(this, 0, 0)
+            })
+        }
+    }
+</script>
+
+</body>
+</html>
