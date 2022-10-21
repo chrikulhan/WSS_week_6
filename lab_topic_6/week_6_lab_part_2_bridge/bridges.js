@@ -978,7 +978,14 @@ let allTheBridges = [
 
 
 //TODO make another array of all the US bridges from allTheBridges array above.
-// let allTheUSBridges = []
+let allTheUSBridges = []
+
+// from references: https://stackoverflow.com/questions/4497728/get-country-from-latitude-longitude
+// https://github.com/hlaw/codegrid-js-->
+// WRONG
+// let grid = codegrid.CodeGrid(); // initialize
+//
+// grid.getCode (lat, lng, function (err, code) { ... });
 
 // allTheBridges.forEach(function(findBridgesInUS){
 // if //write code here that would pull all the data from the allTheBridges array into a new array
@@ -987,11 +994,16 @@ let allTheBridges = [
 
 //reference: geographic center of the contiguous United States: https://geohack.toolforge.org/geohack.php?pagename=Geographic_center_of_the_United_States&params=39_50_N_98_35_W_region:US-KS_type:landmark&title=Geographic+Center+of+the+Contiguous+United+States
 let UnitedStatesCenterCoordinates = [39.833333, -98.583333]
-let zoomLevel = 3
+let zoomLevel = 11
 let map = L.map('longest-bridges-map').setView(UnitedStatesCenterCoordinates, zoomLevel)
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(map);
+//reference:https://docs.eegeo.com/eegeo.js/v0.1.280/docs/leaflet/L.LatLngBounds/
+map.fitBounds([
+    [49.211045, -125.399207],
+    [38.355490227565774, -40.031264732237254]
+]);
 
 //reference: https://stackoverflow.com/questions/43737065/javascript-is-it-possible-to-limit-the-results-given-by-a-foreach-loop
 //the slice(0,5).forEach will access only the first 5 elements, and because the array
