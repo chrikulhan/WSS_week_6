@@ -1,4 +1,6 @@
-let allTheUSBridges = [
+
+
+let allTheBridges = [
     {
         "name": "Akashi Kaiky\u014d Bridge",
         "span": 1991,
@@ -971,28 +973,54 @@ let allTheUSBridges = [
     }
 ]
 
-allTheUSBridges.forEach(function(longBridge) {
-    // console.log(longBridge)
-    console.log('breakbreakbreak')
-    console.log(longBridge.location)
-    console.log(longBridge.span_text)
-    //TODO figure out which of the 5 bridges are the longest using the longBridge.span length, join them,
-    //TODO and then pick the first 5 to forEach. WAIT, they are already in order!
-    console.log(longBridge.span)
-    console.log(longBridge.name)
+// https://stackoverflow.com/questions/4497728/get-country-from-latitude-longitude
+// https://github.com/hlaw/codegrid-js
+
+
+//TODO make another array of all the US bridges from allTheBridges array above.
+// let allTheUSBridges = []
+
+// allTheBridges.forEach(function(findBridgesInUS){
+// if //write code here that would pull all the data from the allTheBridges array into a new array
+//    only if the country code was from the United States
+// }
+
+//reference: geographic center of the contiguous United States: https://geohack.toolforge.org/geohack.php?pagename=Geographic_center_of_the_United_States&params=39_50_N_98_35_W_region:US-KS_type:landmark&title=Geographic+Center+of+the+Contiguous+United+States
+let UnitedStatesCenterCoordinates = [39.833333, -98.583333]
+let zoomLevel = 3
+let map = L.map('longest-bridges-map').setView(UnitedStatesCenterCoordinates, zoomLevel)
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+}).addTo(map);
+
+//reference: https://stackoverflow.com/questions/43737065/javascript-is-it-possible-to-limit-the-results-given-by-a-foreach-loop
+//the slice(0,5).forEach will access only the first 5 elements, and because the array
+// is arranged in numerical order, from largest to smallest, will give the 5 biggest bridges:
+// allTheUSBridges.slice(0,5).forEach(function(longBridge) { ORIGINAL CODE LINE
+// console.log(longBridge)
+// allTheUSBridges.slice(0,5).forEach(function(longBridge) {
+allTheBridges.forEach(function(longBridge) {
+
+// console.log('breakbreakbreak')
+// console.log(longBridge.location)
+// console.log(longBridge.span_text)
+// console.log(longBridge.span)
+// console.log(longBridge.name)
+let bridgeMarker = longBridge.location
+console.log (bridgeMarker)
+let bridgeName = longBridge.name
+console.log(bridgeName)
+let bridgeLength = longBridge.span_text
+console.log(bridgeLength)
+let bridgeCityName = longBridge.city
+console.log(bridgeCityName)
+L.marker(bridgeMarker).addTo(map)
+    .bindPopup(longBridge)
+    .bindPopup(`${bridgeName}<br>${bridgeLength}<br>${bridgeCityName}<br>${bridgeMarker}`)
+    .addTo(map)
 })
 
-//     let bridgeMarker = longBridge.location
-//     console.log (bridgeMarker)
-//
-//     let bridgeName = longBridge.name
-//     console.log(bridgeName)
-//     let bridgeLength = longBridge.span_text
-//     console.log(bridgeLength)
-//     let bridgeCityName = longBridge.city
-//     console.log(bridgeCityName)
-//     L.marker(bridgeMarker).addTo(map)
-//         .bindPopup(longBridge)
-//         .bindPopup(`${bridgeName}<br>${bridgeLength}<br>${bridgeCityName}`)
-//         .addTo(map)
-// })
+
+
+
+

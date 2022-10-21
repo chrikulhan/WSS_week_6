@@ -1,4 +1,4 @@
-let allTheUSBridges = [
+let allTheBridges = [
 {
 "name": "Akashi Kaiky\u014d Bridge",
 "span": 1991,
