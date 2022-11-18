@@ -48,21 +48,21 @@ for adding extra drawing tools to your page.)-->
 <canvas id="canvas" height="400" width="400"></canvas>
 
 <!--undo button to clear the canvas: (from https://github.com/claraj/week5-examples/blob/master/canvas/mouse_draw_undo.html)-->
-<div>
-    <button id=undo>Undo</button>
-</div>
+<!--<div>-->
+<!--    <button id=undo>Undo</button>-->
+<!--</div>-->
 
 <script>
 
     let canvas = document.querySelector('#canvas')
     let context = canvas.getContext('2d')
     let colorSelectedInput = document.querySelector('#selected-color')
-    let radiusSelectedInput = document.querySelector('#range')
+    let radiusSelectedInput = document.querySelector('#selected-size')
 
-    let undoButton = document.querySelector('#undo')
+    // let undoButton = document.querySelector('#undo')
 
     // Stores all the versions of the drawing the user has made.
-    let history = []
+    // let history = []
 
     // Keep track of whether the mouse button has been pressed down or not.
     // Think of this as whether the user is drawing or not, is their brush on the canvas?
@@ -77,92 +77,87 @@ for adding extra drawing tools to your page.)-->
 
     canvas.addEventListener('mouseup', function() {
         mousedown = false
-        saveHistory()
+        // saveHistory()
     })
 
     // If mouse leaves the canvas then stop drawing
     canvas.addEventListener('mouseout', function() {
         mousedown = false
-        saveHistory()
+        // saveHistory()
 
     })
-
     canvas.addEventListener('mousemove', function() {
-        // Only draw if the mouse button is pressed down.
-        if (mousedown) {
+
+        // If the mouse button is not pressed down, do not draw.
+        if (!mousedown) { return }
             // event is a built-in variable, contains the event that triggered this function
             // get the x, y location of the event
             let x = event.offsetX
             let y = event.offsetY   //offsetX, offsetY, may not work in older browsers
-            draw(x, y)
-        }
-    })
+            // draw(x, y)
+        // Only draw if the mouse button is pressed down.
 
-    canvas.addEventListener('mousemove', function() {
-        // If the mouse button is not pressed down, do not draw.
-        if (!mousedown) { return }
+        if (mousedown) {
 
         let colorSelected = colorSelectedInput.value
         // console.log(colorSelected)
-        let radiusSelected = radiusSelectedInput.value
+        let selectedSize = radiusSelectedInput.value
         // console.log(radiusSelected)
 
         //change the size of the circle radius to user input:
 
-        let size = radiusSelected
-
-        context.arc(x-(size/2), y-(size/2), size, 0, 2*Math.PI)
+        context.arc(x-(selectedSize/2), y-(selectedSize/2), selectedSize, 0, 2*Math.PI)
         //^^(x-axis from top left, y-axis from top left, radius, startAngle, endAngle (2*Math.PI = whole circle).)
         context.strokeStyle = colorSelected
         context.fill() //fills in the circle, from: https://github.com/claraj/week5-examples/blob/master/canvas/circles.html
-
-    })
-    undoButton.addEventListener('click', function(){
-        undoHistory()
-    })
-
-    function draw(x, y) {
-        //Draw a filled rectangle centered under the mouse click
-        //x, y is the top left corner, so shift up and left by 5 to center it under the mouse.
-        context.fillRect(x-5, y-5, 10, 10) //this draws a rectangle and I know I want to draw a circle.
-        hasJustDrawn = true   // record that user has just drawn - used by undo
-    }
-
-
-    function saveHistory() {
-        let picture = canvas.toDataURL()  // convert image to data representation
-        if (history[history.length - 1] != picture) {   // if it's not already saved...
-            history.push(picture)  // add to history array
         }
-    }
+    })
+    // undoButton.addEventListener('click', function(){
+    //     undoHistory()
+    // })
+    //
+    // function draw(x, y) {
+    //     //Draw a filled rectangle centered under the mouse click
+    //     //x, y is the top left corner, so shift up and left by 5 to center it under the mouse.
+    //     context.fillRect(x-5, y-5, 10, 10) //this draws a rectangle and I know I want to draw a circle.
+    //     hasJustDrawn = true   // record that user has just drawn - used by undo
+    // }
 
-    function undoHistory() {
 
-        /* if the user has just drawn, need to remove the last drawing from the history; and then remove
-          the image before that and draw it on the canvas.
-          So if user has just drawn, history could be [img0, img1, img2, img3]
-          pop img3
-          Draw img2 on the canvas
-          If the user hasn't just drawn - for example, they are clicking the undo button several times to
-          undo a series of lines - then remove the last image from history and draw that
-          So history could be [img0, img1, img2]
-          Pop img2
-          Draw img1 on the canvas
-          */
-
-        history.pop()
-        let previousPicture = history[history.length - 1]
-
-        context.clearRect(0, 0, canvas.width, canvas.height)
-        if (previousPicture) {
-            // Create an image from the previous picture and draw it on the canvas
-            let image = new Image()
-            image.src = previousPicture
-            image.addEventListener('load', function() {
-                context.drawImage(this, 0, 0)
-            })
-        }
-    }
+    // function saveHistory() {
+    //     let picture = canvas.toDataURL()  // convert image to data representation
+    //     if (history[history.length - 1] != picture) {   // if it's not already saved...
+    //         history.push(picture)  // add to history array
+    //     }
+    // }
+    //
+    // function undoHistory() {
+    //
+    //     /* if the user has just drawn, need to remove the last drawing from the history; and then remove
+    //       the image before that and draw it on the canvas.
+    //       So if user has just drawn, history could be [img0, img1, img2, img3]
+    //       pop img3
+    //       Draw img2 on the canvas
+    //       If the user hasn't just drawn - for example, they are clicking the undo button several times to
+    //       undo a series of lines - then remove the last image from history and draw that
+    //       So history could be [img0, img1, img2]
+    //       Pop img2
+    //       Draw img1 on the canvas
+    //       */
+    //
+    //     history.pop()
+    //     let previousPicture = history[history.length - 1]
+    //
+    //     context.clearRect(0, 0, canvas.width, canvas.height)
+    //     if (previousPicture) {
+    //         // Create an image from the previous picture and draw it on the canvas
+    //         let image = new Image()
+    //         image.src = previousPicture
+    //         image.addEventListener('load', function() {
+    //             context.drawImage(this, 0, 0)
+    //         })
+    //     }
+    // }
 </script>
 
 </body>
