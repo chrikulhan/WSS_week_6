@@ -56,13 +56,9 @@ for adding extra drawing tools to your page.)-->
 
     let canvas = document.querySelector('#canvas')
     let context = canvas.getContext('2d')
-    let colorSelectedInput = document.querySelector('#color')
+    let colorSelectedInput = document.querySelector('#selected-color')
     let radiusSelectedInput = document.querySelector('#range')
 
-    let colorSelected = colorSelectedInput.value
-    console.log(colorSelected)
-    let radiusSelected = radiusSelectedInput.value
-    console.log(radiusSelected)
     let undoButton = document.querySelector('#undo')
 
     // Stores all the versions of the drawing the user has made.
@@ -105,6 +101,11 @@ for adding extra drawing tools to your page.)-->
     canvas.addEventListener('mousemove', function() {
         // If the mouse button is not pressed down, do not draw.
         if (!mousedown) { return }
+
+        let colorSelected = colorSelectedInput.value
+        // console.log(colorSelected)
+        let radiusSelected = radiusSelectedInput.value
+        // console.log(radiusSelected)
 
         //change the size of the circle radius to user input:
 
