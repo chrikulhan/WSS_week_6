@@ -72,7 +72,7 @@ for adding extra drawing tools to your page.)-->
         mousedown = true
         let x = event.offsetX
         let y = event.offsetY
-        draw(x, y)
+        // draw(x, y)
     })
 
     canvas.addEventListener('mouseup', function() {
@@ -108,7 +108,8 @@ for adding extra drawing tools to your page.)-->
 
         context.arc(x-(selectedSize/2), y-(selectedSize/2), selectedSize, 0, 2*Math.PI)
         //^^(x-axis from top left, y-axis from top left, radius, startAngle, endAngle (2*Math.PI = whole circle).)
-        context.strokeStyle = colorSelected
+
+        context.fillStyle = colorSelected
         context.fill() //fills in the circle, from: https://github.com/claraj/week5-examples/blob/master/canvas/circles.html
         }
     })
