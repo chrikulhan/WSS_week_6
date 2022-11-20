@@ -34,7 +34,7 @@ let expenseChart = new Chart(ctx, {
 let chartColors = [ 'tomato', 'orange', 'dodgerblue', 'mediumseagreen', 'slateblue', 'violet' ]
 //How many colors do we need?
 //**unknown because the number of inputs is unknown.
-//-We have 6 listed above, so the first 6 inputs will be in the array above and then it will cycle back to
+//-We have 6 listed above, so the first 6 inputs will be in the array above, and then it will cycle back to
 //the first listed in the array.
 
 //This is called from the addExpenseButton event listener:
@@ -43,11 +43,11 @@ function addExpenseToChart(name, amount) {
 
     // 2. TODO add expense to chart
     expenseChart.data.labels.push(name) //will push into the labels array in the chart object
-    expenseChart.data.datasets[0].data.push(amount) //will push into the data array above in the chart ojbect
+    expenseChart.data.datasets[0].data.push(amount) //will push into the data array above in the chart object
 //   ^^^tricky because the  data:[] *array* is an *object* within another *array* [],
 //    so the zero object {} is labeled as [0] when we are trying to
 //    dig into it, and then .data.push(amount because data is the name of the
-//    array within the object.
+//    array within the object.)
 
 //     4b.work on having the user input data be from the chartColors (above)
 
@@ -90,7 +90,7 @@ addExpenseButton.addEventListener('click', function() {
         errors.push('Enter a positive amount for the expense')
     }
 
-    // If any errors (from above), alert and return - do not procede to add to chart
+    // If any errors (from above), alert and return - do not precede to add to chart
     if (errors.length > 0) {
         alert( errors.join('\n') )
         return
