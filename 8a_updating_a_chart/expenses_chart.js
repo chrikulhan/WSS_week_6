@@ -21,7 +21,6 @@ let expenseChart = new Chart(ctx, {
             {
                 data:[],
                 backgroundColor: []
-
             }
         ],
         labels:[]
